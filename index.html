@@ -2,22 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Is WoW Classic Plus Announced? | NO</title>
+  <title>Is Classic Plus Announced? | NO</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Find out if WoW Classic Plus has been announced or released. The answer is clear: NO.">
-  <meta name="keywords" content="WoW Classic Plus, WoW Classic, World of Warcraft, Classic Plus announcement, WoW release">
+  <meta name="description" content="Find out if classic Plus has been announced or released.">
+  <meta name="keywords" content="Classic Plus announcement">
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph for Social Sharing -->
-  <meta property="og:title" content="Is WoW Classic Plus Announced? NO">
-  <meta property="og:description" content="Find out if WoW Classic Plus has been announced or released. The answer is clear: NO.">
-  <meta property="og:image" content="https://www.isclassicplusannounced.com/images/kobold.JPG">
-  <meta property="og:url" content="https://www.isclassicplusannounced.com/">
-  <meta property="og:type" content="website">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/kobold.JPG">
 
   <style>
     html, body {
@@ -77,54 +67,10 @@
 
   <!-- Hidden keywords -->
   <div class="keywords">
-    WoW Classic Plus, WoW Classic, World of Warcraft, Classic Plus announcement, WoW release
+    Classic Plus, Classic, Classic Plus announcement
   </div>
 
   <script>
-    // Rain animation
-    const canvas = document.getElementById('rainCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const img = new Image();
-    img.src = 'images/kobold.JPG'; // case-sensitive
-
-    img.onload = () => {
-      const drops = [];
-      const numberOfDrops = 30;
-
-      for (let i = 0; i < numberOfDrops; i++) {
-        drops.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          speed: (2 + Math.random() * 3) / 2,
-          size: 40 + Math.random() * 20
-        });
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drops.forEach(drop => {
-          ctx.drawImage(img, drop.x, drop.y, drop.size, drop.size);
-          drop.y += drop.speed;
-          if (drop.y > canvas.height) {
-            drop.y = -drop.size;
-            drop.x = Math.random() * canvas.width;
-          }
-        });
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    };
-
     // Random funny text
     const funnyTexts = [
       "Not today.",
@@ -132,13 +78,11 @@
       "Ask again later.",
       "LOL, no.",
       "Keep dreaming.",
-      "Classic Plus? More like Classic Nope.",
       "Patience, grasshopper.",
       "In your dreams.",
       "Not in this universe.",
       "Try again in 2027.",
-      "The answer is firmly negative.",
-      "Blizzard says… nope."
+      "The answer is firmly negative."
     ];
 
     const funnyElement = document.getElementById('funnyText');
