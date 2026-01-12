@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Is Classic Plus Announced?</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/kobold.JPG">
+
   <style>
     html, body {
       margin: 0;
@@ -53,9 +57,9 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Load the image
+    // Load the kobold image
     const img = new Image();
-    img.src = 'images/kobold.JPG'; // Correct path and case-sensitive
+    img.src = 'images/kobold.JPG'; // case-sensitive, must match your repo
 
     img.onload = () => {
       const drops = [];
@@ -66,7 +70,7 @@
         drops.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          speed: (2 + Math.random() * 3) / 2, // slow down by half
+          speed: (2 + Math.random() * 3) / 2, // slowed by half
           size: 40 + Math.random() * 20
         });
       }
