@@ -4,19 +4,89 @@
   <meta charset="UTF-8">
   <title>Is Classic Plus Announced?</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+      background: #111; /* dark background */
+      position: relative;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0; /* behind the text */
+    }
+
+    .text {
+      position: relative;
+      z-index: 1; /* above the canvas */
       font-size: 20vw;
       font-weight: bold;
+      color: white;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-  NO
+  <canvas id="rainCanvas"></canvas>
+  <div class="text">NO</div>
+
+  <script>
+    const canvas = document.getElementById('rainCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Load your image
+    const img = new Image();
+    img.src = 'images/kobold.jpg'; // path to your image in the repo
+
+    const drops = [];
+    const numberOfDrops = 50; // adjust how many falling images
+
+    for (let i = 0; i < numberOfDrops; i++) {
+      drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: 2 + Math.random() * 3,
+        size: 40 + Math.random() * 30 // random size for each drop
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drops.forEach(drop => {
+        ctx.drawImage(img, drop.x, drop.y, drop.size, drop.size);
+        drop.y += drop.speed;
+
+        if (drop.y > canvas.height) {
+          drop.y = -drop.size;
+          drop.x = Math.random() * canvas.width;
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    img.onload = () => {
+      animate();
+    };
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
