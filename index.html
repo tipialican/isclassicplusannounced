@@ -19,32 +19,6 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/kobold.JPG">
 
-  <!-- Structured Data for Google Featured Snippet -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is WoW Classic Plus announced?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NO"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is WoW Classic Plus out?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NO"
-        }
-      }
-    ]
-  }
-  </script>
-
   <style>
     html, body {
       margin: 0;
@@ -79,9 +53,9 @@
       text-align: center;
     }
 
-    /* Optional small text for extra keywords without cluttering UI */
+    /* Hidden keywords for extra indexing (optional) */
     .keywords {
-      display: none; /* hidden but indexed by Google */
+      display: none;
     }
   </style>
 </head>
@@ -89,7 +63,7 @@
   <canvas id="rainCanvas"></canvas>
   <div class="text">NO</div>
 
-  <!-- Hidden keywords for indexing -->
+  <!-- Hidden keywords -->
   <div class="keywords">
     WoW Classic Plus, WoW Classic, World of Warcraft, Classic Plus announcement, WoW release
   </div>
@@ -106,20 +80,19 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Load the kobold image for raining effect
+    // Load the kobold image
     const img = new Image();
-    img.src = 'images/kobold.JPG'; // correct path and case-sensitive
+    img.src = 'images/kobold.JPG'; // Make sure the case matches exactly
 
     img.onload = () => {
       const drops = [];
       const numberOfDrops = 30; // number of falling images
 
-      // Initialize drops
       for (let i = 0; i < numberOfDrops; i++) {
         drops.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          speed: (2 + Math.random() * 3) / 2, // slowed by half
+          speed: (2 + Math.random() * 3) / 2, // slower rain
           size: 40 + Math.random() * 20
         });
       }
@@ -142,6 +115,16 @@
 
       animate();
     };
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <!-- Replace with your own Measurement ID if different -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRDQTC0JQ7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NRDQTC0JQ7');
   </script>
 </body>
 </html>
