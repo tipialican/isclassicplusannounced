@@ -2,10 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Is Classic Plus Announced?</title>
+  <title>Is WoW Classic Plus Announced? | NO</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Find out if WoW Classic Plus has been announced or released. The answer is clear: NO.">
+  <meta name="keywords" content="WoW Classic Plus, WoW Classic, World of Warcraft, Classic Plus announcement, WoW release">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Is WoW Classic Plus Announced? NO">
+  <meta property="og:description" content="Find out if WoW Classic Plus has been announced or released. The answer is clear: NO.">
+  <meta property="og:image" content="https://www.isclassicplusannounced.com/images/kobold.JPG">
+  <meta property="og:url" content="https://www.isclassicplusannounced.com/">
+  <meta property="og:type" content="website">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/kobold.JPG">
+
+  <!-- Structured Data for Google Featured Snippet -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is WoW Classic Plus announced?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NO"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is WoW Classic Plus out?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NO"
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     html, body {
@@ -20,7 +58,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: white; /* White background */
+      background: white;
       position: relative;
     }
 
@@ -38,12 +76,23 @@
       font-weight: bold;
       color: black; /* black "NO" text */
       pointer-events: none;
+      text-align: center;
+    }
+
+    /* Optional small text for extra keywords without cluttering UI */
+    .keywords {
+      display: none; /* hidden but indexed by Google */
     }
   </style>
 </head>
 <body>
   <canvas id="rainCanvas"></canvas>
   <div class="text">NO</div>
+
+  <!-- Hidden keywords for indexing -->
+  <div class="keywords">
+    WoW Classic Plus, WoW Classic, World of Warcraft, Classic Plus announcement, WoW release
+  </div>
 
   <script>
     const canvas = document.getElementById('rainCanvas');
@@ -57,9 +106,9 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Load the kobold image
+    // Load the kobold image for raining effect
     const img = new Image();
-    img.src = 'images/kobold.JPG'; // case-sensitive, must match your repo
+    img.src = 'images/kobold.JPG'; // correct path and case-sensitive
 
     img.onload = () => {
       const drops = [];
