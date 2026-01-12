@@ -16,7 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #111; /* dark background */
+      background: #111; /* dark background so raindrops are visible */
       position: relative;
     }
 
@@ -24,12 +24,12 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 0; /* behind the text */
+      z-index: 0; /* behind text */
     }
 
     .text {
       position: relative;
-      z-index: 1; /* above the canvas */
+      z-index: 1; /* above canvas */
       font-size: 20vw;
       font-weight: bold;
       color: white;
@@ -44,49 +44,52 @@
   <script>
     const canvas = document.getElementById('rainCanvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
 
-    // Load your image
-    const img = new Image();
-    img.src = 'images/kobold.jpg'; // path to your image in the repo
-
-    const drops = [];
-    const numberOfDrops = 50; // adjust how many falling images
-
-    for (let i = 0; i < numberOfDrops; i++) {
-      drops.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        speed: 2 + Math.random() * 3,
-        size: 40 + Math.random() * 30 // random size for each drop
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      drops.forEach(drop => {
-        ctx.drawImage(img, drop.x, drop.y, drop.size, drop.size);
-        drop.y += drop.speed;
-
-        if (drop.y > canvas.height) {
-          drop.y = -drop.size;
-          drop.x = Math.random() * canvas.width;
-        }
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    img.onload = () => {
-      animate();
-    };
-
-    window.addEventListener('resize', () => {
+    function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    });
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Load the image
+    const img = new Image();
+    img.src = 'images/kobold.jpg'; // path relative to your HTML file
+
+    // Make sure the animation only starts after the image is loaded
+    img.onload = () => {
+      const drops = [];
+      const numberOfDrops = 30; // fewer drops to start, easier on performance
+
+      // Initialize drops
+      for (let i = 0; i < numberOfDrops; i++) {
+        drops.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          speed: 2 + Math.random() * 3,
+          size: 40 + Math.random() * 20
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drops.forEach(drop => {
+          ctx.drawImage(img, drop.x, drop.y, drop.size, drop.size);
+          drop.y += drop.speed;
+
+          if (drop.y > canvas.height) {
+            drop.y = -drop.size;
+            drop.x = Math.random() * canvas.width;
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    };
   </script>
 </body>
 </html>
