@@ -30,6 +30,7 @@
 
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background: white;
@@ -53,7 +54,17 @@
       text-align: center;
     }
 
-    /* Hidden keywords for extra indexing (optional) */
+    .funny {
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: #333;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Hidden keywords for extra indexing */
     .keywords {
       display: none;
     }
@@ -62,6 +73,7 @@
 <body>
   <canvas id="rainCanvas"></canvas>
   <div class="text">NO</div>
+  <div class="funny" id="funnyText"></div>
 
   <!-- Hidden keywords -->
   <div class="keywords">
@@ -69,6 +81,7 @@
   </div>
 
   <script>
+    // Rain animation
     const canvas = document.getElementById('rainCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -80,45 +93,60 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Load the kobold image
     const img = new Image();
-    img.src = 'images/kobold.JPG'; // Make sure the case matches exactly
+    img.src = 'images/kobold.JPG'; // case-sensitive
 
     img.onload = () => {
       const drops = [];
-      const numberOfDrops = 30; // number of falling images
+      const numberOfDrops = 30;
 
       for (let i = 0; i < numberOfDrops; i++) {
         drops.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          speed: (2 + Math.random() * 3) / 2, // slower rain
+          speed: (2 + Math.random() * 3) / 2,
           size: 40 + Math.random() * 20
         });
       }
 
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         drops.forEach(drop => {
           ctx.drawImage(img, drop.x, drop.y, drop.size, drop.size);
           drop.y += drop.speed;
-
           if (drop.y > canvas.height) {
             drop.y = -drop.size;
             drop.x = Math.random() * canvas.width;
           }
         });
-
         requestAnimationFrame(animate);
       }
 
       animate();
     };
+
+    // Random funny text
+    const funnyTexts = [
+      "Not today.",
+      "Maybe in another life.",
+      "Ask again later.",
+      "LOL, no.",
+      "Keep dreaming.",
+      "Classic Plus? More like Classic Nope.",
+      "Patience, grasshopper.",
+      "In your dreams.",
+      "Not in this universe.",
+      "Try again in 2027.",
+      "The answer is firmly negative.",
+      "Blizzard says… nope."
+    ];
+
+    const funnyElement = document.getElementById('funnyText');
+    const randomIndex = Math.floor(Math.random() * funnyTexts.length);
+    funnyElement.textContent = funnyTexts[randomIndex];
   </script>
 
   <!-- Google Analytics 4 -->
-  <!-- Replace with your own Measurement ID if different -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRDQTC0JQ7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
